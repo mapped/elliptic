@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
+      id-token: write  # Required for OIDC https://docs.npmjs.com/trusted-publishers#supported-cicd-providers
 
     steps:
       - uses: actions/checkout@v7
@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: '22'
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false  # never use caching in release builds
 
       - name: Version
         id: vtl
@@ -41,5 +42,3 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/master'
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
