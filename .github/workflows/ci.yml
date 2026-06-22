@@ -25,6 +25,7 @@ jobs:
         uses: mapped/action-vtl@latest
         with:
           baseVersion: '6.6.2'
+          releasesBranch: master
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install
