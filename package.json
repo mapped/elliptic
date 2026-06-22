@@ -33,7 +33,7 @@
     "mocha": "^12.0.0-rc.1"
   },
   "dependencies": {
-    "bn.js": "^4.11.9",
+    "bn.js": "^5.2.3",
     "brorand": "^1.1.0",
     "hash.js": "^1.0.0",
     "hmac-drbg": "^1.0.1",

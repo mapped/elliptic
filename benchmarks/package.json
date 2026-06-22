@@ -15,7 +15,7 @@
     "eckey": "^0.8.0",
     "hash.js": "^0.3.2",
     "jodid25519": "git://github.com/meganz/jodid25519.git",
-    "secp256k1": "~0.0.13",
+    "secp256k1": "~5.0.1",
     "sjcl": "^1.0.1"
   }
 }
