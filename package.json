@@ -1,7 +1,7 @@
 {
-  "name": "elliptic",
-  "version": "6.6.1",
-  "description": "EC cryptography",
+  "name": "@mapped/elliptic",
+  "version": "6.6.2",
+  "description": "EC cryptography (mapped fork with CVE-2025-14505 fix)",
   "main": "lib/elliptic.js",
   "files": [
     "lib"
@@ -10,12 +10,11 @@
     "lint": "eslint lib test",
     "lint:fix": "npm run lint -- --fix",
     "unit": "istanbul test _mocha --reporter=spec test/index.js",
-    "test": "npm run lint && npm run unit",
-    "version": "grunt dist && git add dist/"
+    "test": "npm run lint && npm run unit"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:indutny/elliptic"
+    "url": "git@github.com:mapped/elliptic"
   },
   "keywords": [
     "EC",

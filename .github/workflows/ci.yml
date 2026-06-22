@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Version
+        id: vtl
+        uses: mapped/action-vtl@latest
+        with:
+          baseVersion: '6.6.2'
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install
+        run: npm ci
+
+      - name: Test
+        run: npm run unit
+
+      - name: Set package version
+        if: github.ref == 'refs/heads/master'
+        run: npm version ${{ steps.vtl.outputs.ver_semVerNoMeta }} --no-git-tag-version
+
+      - name: Publish to npm
+        if: github.ref == 'refs/heads/master'
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
