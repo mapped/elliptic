@@ -1,6 +1,6 @@
 {
   "name": "@mapped/elliptic",
-  "version": "6.6.2",
+  "version": "0.0.0",
   "description": "EC cryptography (mapped fork with CVE-2025-14505 fix)",
   "main": "lib/elliptic.js",
   "files": [
